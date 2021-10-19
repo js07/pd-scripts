@@ -8,7 +8,9 @@ Scripts for developing Pipedream components
 
 ## Usage
 
-### With npx
+### Creating workflows
+
+#### With npx
 
 ```
 npx github:js07/pd-scripts create <action_files...> -u <pdusername> -p <pdpassword> --app <App Name>
