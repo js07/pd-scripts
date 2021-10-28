@@ -4,7 +4,7 @@
     "oclif-typescript"
   ],
   "rules": {
-    "max-len": ["error", { "code": 80 }],
+    "max-len": ["error", { "code": 120 }],
     "indent": ["error", 2, { "MemberExpression": 1 }],
     "semi": ["error", "always"],
     "object-curly-spacing": ["error", "always"]
