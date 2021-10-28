@@ -1,3 +1,4 @@
 {
-  "prettier.enable": false
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.printWidth": 120
 }
