@@ -19,7 +19,7 @@ $ npm install -g pd-scripts
 $ pd-scripts COMMAND
 running command...
 $ pd-scripts (-v|--version|version)
-pd-scripts/0.0.0 darwin-x64 node-v14.18.1
+pd-scripts/0.0.2 darwin-x64 node-v14.18.1
 $ pd-scripts --help [COMMAND]
 USAGE
   $ pd-scripts COMMAND
@@ -30,6 +30,9 @@ USAGE
 <!-- commands -->
 * [`pd-scripts create FILES`](#pd-scripts-create-files)
 * [`pd-scripts help [COMMAND]`](#pd-scripts-help-command)
+* [`pd-scripts version [FILE]`](#pd-scripts-version-file)
+* [`pd-scripts version:dev [FILE]`](#pd-scripts-versiondev-file)
+* [`pd-scripts version:reset [FILE]`](#pd-scripts-versionreset-file)
 
 ## `pd-scripts create FILES`
 
@@ -48,7 +51,7 @@ OPTIONS
   --selectAccount
 ```
 
-_See code: [src/commands/create.ts](https://github.com/js07/pd-scripts/blob/v0.0.0/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/create.ts)_
 
 ## `pd-scripts help [COMMAND]`
 
@@ -66,4 +69,52 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
+
+## `pd-scripts version [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/version.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version.ts)_
+
+## `pd-scripts version:dev [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:dev [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/version/dev.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/dev.ts)_
+
+## `pd-scripts version:reset [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:reset [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/version/reset.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/reset.ts)_
 <!-- commandsstop -->
