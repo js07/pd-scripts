@@ -3,21 +3,79 @@ import * as fs from 'fs';
 import gulp from 'gulp';
 import replace from 'gulp-replace';
 import { get, set } from './datastore';
+import { warn } from './logger';
 
-type Globs = string | string[];
+// const ACTION_VERSIONS_KEY = Symbol('ACTION_VERSIONS_KEY');
+export const ACTION_VERSIONS_KEY = 'ACTION_VERSIONS_KEY';
 
+export type Globs = string | string[];
+interface Action {
+  key: string;
+  name: string;
+  version: string;
+  type?: string;
+  description?: string;
+  filePath?: string;
+}
+
+interface ActionWithFile extends Action {
+  filePath: string;
+}
+
+interface ActionVersions {
+  [key: string]: string;
+}
+
+function propRegex(propName: string) {
+  return new RegExp(`${propName}: ['"](.+)['"]`);
+}
+function keyRegex() {
+  // return /key: ['"](.+)['"],\n/;
+  return propRegex('key');
+}
+function nameRegex() {
+  // return /name: ['"](.+)['"],\n/;
+  return propRegex('name');
+}
+function versionRegex() {
+  // return /version:\s?['"](\d+.\d+.\d+)['"]/;
+  return propRegex('version');
+}
+function typeRegex() {
+  return propRegex('type');
+  // return /key: ['"](.+)['"],\n/;
+}
 function getFiles(globPattern: string) {
   return glob.sync(globPattern);
 }
-function isProdAction(file: string) {
+function isProdActionFile(file: string) {
   return !file.includes('.dev.');
 }
-function isAction(file: string) {
+function isActionFile(file: string) {
   const fileContent = fs.readFileSync(file, 'utf-8');
   return /version: ["']/.test(fileContent);
 }
 function filterFile(file: string) {
-  return isAction(file) && isProdAction(file);
+  return isActionFile(file) && isProdActionFile(file);
+}
+function isAction(action: Partial<Action>): action is Action {
+  return Boolean(action.key) && Boolean(action.name) && Boolean(action.version);
+}
+export function getActionProps(file: string): Action | null {
+  const fileContent = fs.readFileSync(file, 'utf-8');
+  const props = {
+    key: keyRegex().exec(fileContent)?.[1],
+    name: nameRegex().exec(fileContent)?.[1],
+    version: versionRegex().exec(fileContent)?.[1],
+    type: typeRegex().exec(fileContent)?.[1],
+    description: typeRegex().exec(fileContent)?.[1],
+  };
+  return isAction(props) ? props : null;
+}
+export function getActionsProps(files: string[]) {
+  return files
+    .map(getActionProps)
+    .filter((a): a is Action => Boolean(a));
 }
 function getActionName(file: string) {
   const fileContent = fs.readFileSync(file, 'utf-8');
@@ -44,14 +102,14 @@ export function getActionsFromFiles(files: string[]) {
 
 function changeVersion(
   globs: Globs,
-  version: string | ((oldVersion: string) => string)
+  version: string | ((oldVersion: string) => string),
 ) {
   return gulp
     .src(globs, {
       base: './',
     })
     .pipe(
-      replace(/version:\s?['"](\d+.\d+.\d+)['"]/g, (_match, capture) => {
+      replace(versionRegex(), (_match, capture) => {
         if (typeof version === 'string') {
           return `version: "${version}"`;
         }
@@ -79,3 +137,63 @@ export function setDevVersion(globs: Globs) {
   const version = `0.0.${Math.floor(Date.now() / 1000)}`;
   return setVersion(globs, version);
 }
+
+function getActionVersionStoreKey(actionKey: string): string {
+  return `${ACTION_VERSIONS_KEY}.${actionKey}`;
+}
+
+// export function getStoredVersions(files: string[]) {
+//   const actions = files.map((f): Partial<Action> => ({ ...getActionProps(f), filePath: f }));
+//   const notFoundActions = actions.filter(f => !f.key);
+//   if (notFoundActions.length > 0) {
+//     warn(`Actions not found for files: ${notFoundActions.join(', ')}`);
+//   }
+//   actions
+//     .filter((a): a is ActionWithFile => a !== null)
+//     .forEach(restoreActionVersion);
+// }
+export function getFileActions(files: string[]) {
+  const actions = files.map((f): Partial<Action> => ({ ...getActionProps(f), filePath: f }));
+  const notFoundActions = actions.filter(f => !f.key);
+  if (notFoundActions.length > 0) {
+    warn(`Actions not found for files: ${notFoundActions.join(', ')}`);
+  }
+  const foundActions = actions.filter((a): a is ActionWithFile => a !== null);
+  return foundActions;
+}
+
+function restoreActionVersion(action: ActionWithFile) {
+  const storeKey = getActionVersionStoreKey(action.key);
+  const version = get(storeKey);
+  setVersion(action.filePath, version);
+}
+
+// export function storeVersions(files: string[]) {
+export function storeVersions(globs: Globs) {
+  const files = typeof globs === 'string' ? getFiles(globs) : globs;
+  const actions = getActionsProps(files);
+  const actionVersions = actions.reduce((acc: ActionVersions, action) => {
+    acc[getActionVersionStoreKey(action.key)] = action.version;
+    return acc;
+  }, {});
+  set(actionVersions);
+}
+
+export function restoreVersions(globs: Globs) {
+  const files = typeof globs === 'string' ? getFiles(globs) : globs;
+  const actions = getFileActions(files);
+  actions.forEach(restoreActionVersion);
+}
+
+// export function getStoredVersions(files: string[]) {
+//   const actions = files.map((f): Partial<Action> => ({ ...getActionProps(f), filePath: f }));
+//   const notFoundActions = actions.filter(f => !f.key);
+//   if (notFoundActions.length > 0) {
+//     warn(`Actions not found for files: ${notFoundActions.join(', ')}`);
+//   }
+//   return actions
+//     .filter((a): a is ActionWithFile => a !== null)
+//   // actions
+//   //   .filter((a): a is ActionWithFile => a !== null)
+//   //   .forEach(restoreActionVersion);
+// }

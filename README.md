@@ -30,9 +30,14 @@ USAGE
 <!-- commands -->
 * [`pd-scripts create FILES`](#pd-scripts-create-files)
 * [`pd-scripts help [COMMAND]`](#pd-scripts-help-command)
+* [`pd-scripts test FILES`](#pd-scripts-test-files)
 * [`pd-scripts version [FILE]`](#pd-scripts-version-file)
-* [`pd-scripts version:dev [FILE]`](#pd-scripts-versiondev-file)
-* [`pd-scripts version:reset [FILE]`](#pd-scripts-versionreset-file)
+* [`pd-scripts version:bump FILES`](#pd-scripts-versionbump-files)
+* [`pd-scripts version:dev FILES`](#pd-scripts-versiondev-files)
+* [`pd-scripts version:reset FILES`](#pd-scripts-versionreset-files)
+* [`pd-scripts version:restore FILES`](#pd-scripts-versionrestore-files)
+* [`pd-scripts version:set [FILE]`](#pd-scripts-versionset-file)
+* [`pd-scripts version:store FILES`](#pd-scripts-versionstore-files)
 
 ## `pd-scripts create FILES`
 
@@ -70,6 +75,20 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
 
+## `pd-scripts test FILES`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts test FILES
+
+OPTIONS
+  -h, --help  show CLI help
+```
+
+_See code: [src/commands/test.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/test.ts)_
+
 ## `pd-scripts version [FILE]`
 
 describe the command here
@@ -86,29 +105,72 @@ OPTIONS
 
 _See code: [src/commands/version.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version.ts)_
 
-## `pd-scripts version:dev [FILE]`
+## `pd-scripts version:bump FILES`
 
 describe the command here
 
 ```
 USAGE
-  $ pd-scripts version:dev [FILE]
+  $ pd-scripts version:bump FILES
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help   show CLI help
+  --storePrev  store action versions to restore later?
+```
+
+_See code: [src/commands/version/bump.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/bump.ts)_
+
+## `pd-scripts version:dev FILES`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:dev FILES
+
+OPTIONS
+  -h, --help   show CLI help
+  --storePrev  store action versions to restore later?
 ```
 
 _See code: [src/commands/version/dev.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/dev.ts)_
 
-## `pd-scripts version:reset [FILE]`
+## `pd-scripts version:reset FILES`
 
 describe the command here
 
 ```
 USAGE
-  $ pd-scripts version:reset [FILE]
+  $ pd-scripts version:reset FILES
+
+OPTIONS
+  -h, --help   show CLI help
+  --storePrev  store action versions to restore later?
+```
+
+_See code: [src/commands/version/reset.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/reset.ts)_
+
+## `pd-scripts version:restore FILES`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:restore FILES
+
+OPTIONS
+  -h, --help  show CLI help
+```
+
+_See code: [src/commands/version/restore.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/restore.ts)_
+
+## `pd-scripts version:set [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:set [FILE]
 
 OPTIONS
   -f, --force
@@ -116,5 +178,19 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/version/reset.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/reset.ts)_
+_See code: [src/commands/version/set.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/set.ts)_
+
+## `pd-scripts version:store FILES`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts version:store FILES
+
+OPTIONS
+  -h, --help  show CLI help
+```
+
+_See code: [src/commands/version/store.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/store.ts)_
 <!-- commandsstop -->

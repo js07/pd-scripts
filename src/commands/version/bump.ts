@@ -1,8 +1,8 @@
 import { Command, flags } from '@oclif/command';
-import { resetVersion } from '../../actions';
+import { bumpVersion } from '../../actions';
 import args from '../../args';
 
-export default class VersionReset extends Command {
+export default class VersionBump extends Command {
   static description = 'describe the command here'
 
   static flags = {
@@ -15,8 +15,8 @@ export default class VersionReset extends Command {
   static strict = false
 
   async run() {
-    const { argv, flags } = this.parse(VersionReset);
+    const { argv, flags } = this.parse(VersionBump);
 
-    resetVersion({ globs: argv, storePrev: flags.storePrev });
+    bumpVersion({ globs: argv, storePrev: flags.storePrev });
   }
 }
