@@ -1,6 +1,6 @@
 import { Command, flags } from '@oclif/command';
+import { createWorkflows } from '../actions';
 import { getActionsFromFiles } from '../utils/files';
-import { createWorkflows } from '../utils/pipedream-ui/create-workflows';
 
 export default class Create extends Command {
   static description = 'describe the command here'

@@ -7,7 +7,7 @@ import { Page } from 'puppeteer-core';
 
 const PIPEDREAM_NEW_WORKFLOW_URL = 'https://pipedream.com/new';
 
-interface CreateWorkflowsOptions {
+export interface CreateWorkflowsOptions {
   username: string;
   password: string;
   actions: string[];
@@ -17,7 +17,7 @@ interface CreateWorkflowsOptions {
   headless?: boolean;
 }
 
-interface CreateWorkflowOptions {
+export interface CreateWorkflowOptions {
   action: string;
   app: string;
   accountName?: string;
@@ -200,15 +200,6 @@ export async function createWorkflows({
   selectAccount,
   headless,
 }: CreateWorkflowsOptions) {
-  console.log(
-    username,
-    password,
-    actions,
-    app,
-    accountName,
-    selectAccount,
-    headless
-  );
   const browser = await launch({ headless });
   const page = await browser.newPage();
   await signin(page, { username, password });
