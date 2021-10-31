@@ -50,11 +50,25 @@ function typeRegex() {
   return propRegex('type');
   // return /key: ['"](.+)['"],\n/;
 }
-export function getFilePaths(globs: Globs) {
+function isGlobPattern(str: string) {
+  return str.includes('*');
+}
+function isFolder(pathString: string) {
+  return fs.lstatSync(pathString).isDirectory();
+}
+export function getFilePaths(globs: Globs): string[] {
   if (Array.isArray(globs)) {
-    return globs;
+    const filePaths: string[] = [];
+    return filePaths.concat(...globs.map(getFilePaths));
   }
-  return glob.sync(globs);
+  if (isGlobPattern(globs)) {
+    return glob.sync(globs, {  ignore: '**/node_modules/**' });
+  }
+  if (isFolder(globs)) {
+    return getFilePaths(`${globs}/**/*.*js`);
+    // return glob.sync(`${globs}/**/*.*js`);
+  }
+  return [globs];
 }
 function getFiles(globPattern: string) {
   return glob.sync(globPattern);
@@ -62,15 +76,8 @@ function getFiles(globPattern: string) {
 function isProdActionFile(file: string) {
   return !file.includes('.dev.');
 }
-function isActionFile(file: string) {
-  const fileContent = fs.readFileSync(file, 'utf-8');
-  return /version: ["']/.test(fileContent);
-}
-function filterFile(file: string) {
-  return isActionFile(file) && isProdActionFile(file);
-}
 function isAction(action: Partial<Action>): action is Action {
-  return Boolean(action.key) && Boolean(action.name) && Boolean(action.version);
+  return Boolean(action.key) && Boolean(action.name) && Boolean(action.version) && action.type === 'action';
 }
 export function getActionProps(file: string): Action | null {
   const fileContent = fs.readFileSync(file, 'utf-8');
@@ -87,6 +94,17 @@ export function getActionsProps(files: string[]) {
   return files
     .map(getActionProps)
     .filter((a): a is Action => Boolean(a));
+}
+function isActionFile(file: string) {
+  // const fileContent = fs.readFileSync(file, 'utf-8');
+  // return /version: ["']/.test(fileContent);
+  return getActionProps(file);
+}
+function filterFile(file: string) {
+  return isActionFile(file) && isProdActionFile(file);
+}
+export function getActionFilePaths(globs: Globs) {
+  return getFilePaths(globs).filter(isActionFile);
 }
 function getActionName(file: string) {
   const fileContent = fs.readFileSync(file, 'utf-8');

@@ -1,14 +1,15 @@
 import { Command, flags } from '@oclif/command';
 import { storeVersion } from '../../actions';
+import { actionCommandArgs } from '../../args';
 
 export default class VersionStore extends Command {
-  static description = 'describe the command here'
+  static description = 'Store action versions'
 
   static flags = {
     help: flags.help({ char: 'h' }),
   }
 
-  static args = [{ name: 'files', required: true }]
+  static args = [...actionCommandArgs]
 
   static strict = false
 

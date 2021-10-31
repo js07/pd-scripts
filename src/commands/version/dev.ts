@@ -1,16 +1,16 @@
 import { Command, flags } from '@oclif/command';
 import { setDevVersion } from '../../actions';
-import args from '../../args';
+import args, { actionCommandArgs } from '../../args';
 
 export default class VersionDev extends Command {
-  static description = 'describe the command here'
+  static description = 'Set action versions to current timestamp'
 
   static flags = {
     help: flags.help({ char: 'h' }),
     storePrev: args.storePrev,
   }
 
-  static args = [{ name: 'files', required: true }]
+  static args = [...actionCommandArgs]
 
   static strict = false
 

@@ -1,14 +1,15 @@
 import { Command, flags } from '@oclif/command';
 import { restoreVersion } from '../../actions';
+import { actionCommandArgs } from '../../args';
 
 export default class VersionRestore extends Command {
-  static description = 'describe the command here'
+  static description = 'Restore action versions to previously stored versions'
 
   static flags = {
     help: flags.help({ char: 'h' }),
   }
 
-  static args = [{ name: 'files', required: true }]
+  static args = [...actionCommandArgs]
 
   static strict = false
 

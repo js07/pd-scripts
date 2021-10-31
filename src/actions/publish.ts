@@ -3,14 +3,14 @@ import * as Files from '../utils/files';
 import { log } from '../utils/logger';
 import { publishFiles } from '../utils/pipedream/cli';
 
-interface PublishActionProps {
+export interface PublishActionProps {
   globs: Files.Globs;
   profile?: string;
   dev?: boolean;
 }
 
 export async function publish({ globs, profile, dev }: PublishActionProps) {
-  const filePaths = Files.getFilePaths(globs);
+  const filePaths = Files.getActionFilePaths(globs);
 
   if (dev) {
     storeVersion({ globs: filePaths });
