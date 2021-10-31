@@ -15,6 +15,6 @@ export default class VersionRestore extends Command {
   async run() {
     const { argv } = this.parse(VersionRestore);
 
-    restoreVersion({ globs: argv });
+    return restoreVersion({ globs: argv });
   }
 }

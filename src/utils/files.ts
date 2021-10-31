@@ -4,6 +4,7 @@ import gulp from 'gulp';
 import replace from 'gulp-replace';
 import { get, set } from './datastore';
 import { warn } from './logger';
+import { Stream } from 'stream';
 
 // const ACTION_VERSIONS_KEY = Symbol('ACTION_VERSIONS_KEY');
 export const ACTION_VERSIONS_KEY = 'ACTION_VERSIONS_KEY';
@@ -26,6 +27,10 @@ interface ActionVersions {
   [key: string]: string;
 }
 
+function promisifyStream(stream: Stream) {
+  return new Promise(res => stream.on('end', res));
+}
+
 function propRegex(propName: string) {
   return new RegExp(`${propName}: ['"](.+)['"]`);
 }
@@ -44,6 +49,12 @@ function versionRegex() {
 function typeRegex() {
   return propRegex('type');
   // return /key: ['"](.+)['"],\n/;
+}
+export function getFilePaths(globs: Globs) {
+  if (Array.isArray(globs)) {
+    return globs;
+  }
+  return glob.sync(globs);
 }
 function getFiles(globPattern: string) {
   return glob.sync(globPattern);
@@ -104,7 +115,7 @@ function changeVersion(
   globs: Globs,
   version: string | ((oldVersion: string) => string),
 ) {
-  return gulp
+  const stream = gulp
     .src(globs, {
       base: './',
     })
@@ -117,6 +128,7 @@ function changeVersion(
       })
     )
     .pipe(gulp.dest('./'));
+  return promisifyStream(stream);
 }
 export function setVersion(globs: Globs, version: string) {
   return changeVersion(globs, version);
@@ -165,7 +177,7 @@ export function getFileActions(files: string[]) {
 function restoreActionVersion(action: ActionWithFile) {
   const storeKey = getActionVersionStoreKey(action.key);
   const version = get(storeKey);
-  setVersion(action.filePath, version);
+  return setVersion(action.filePath, version);
 }
 
 // export function storeVersions(files: string[]) {
@@ -176,13 +188,13 @@ export function storeVersions(globs: Globs) {
     acc[getActionVersionStoreKey(action.key)] = action.version;
     return acc;
   }, {});
-  set(actionVersions);
+  return set(actionVersions);
 }
 
 export function restoreVersions(globs: Globs) {
   const files = typeof globs === 'string' ? getFiles(globs) : globs;
   const actions = getFileActions(files);
-  actions.forEach(restoreActionVersion);
+  return Promise.all(actions.map(restoreActionVersion));
 }
 
 // export function getStoredVersions(files: string[]) {

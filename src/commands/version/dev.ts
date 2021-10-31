@@ -17,6 +17,6 @@ export default class VersionDev extends Command {
   async run() {
     const { argv, flags } = this.parse(VersionDev);
 
-    setDevVersion({ globs: argv, storePrev: flags.storePrev });
+    return setDevVersion({ globs: argv, storePrev: flags.storePrev });
   }
 }

@@ -17,6 +17,6 @@ export default class VersionReset extends Command {
   async run() {
     const { argv, flags } = this.parse(VersionReset);
 
-    resetVersion({ globs: argv, storePrev: flags.storePrev });
+    return resetVersion({ globs: argv, storePrev: flags.storePrev });
   }
 }

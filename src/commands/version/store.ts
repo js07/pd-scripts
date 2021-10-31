@@ -15,6 +15,6 @@ export default class VersionStore extends Command {
   async run() {
     const { argv } = this.parse(VersionStore);
 
-    storeVersion({ globs: argv });
+    return storeVersion({ globs: argv });
   }
 }
