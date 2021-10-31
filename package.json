@@ -1,12 +1,14 @@
 {
-  "name": "pd-scripts",
+  "name": "@js07/pd-scripts",
   "description": "Scripts for developing Pipedream components",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "author": "js07 @js07",
   "bin": {
-    "pd-scripts": "./bin/run"
+    "pd-scripts": "bin/run"
   },
-  "bugs": "https://github.com/js07/pd-scripts/issues",
+  "bugs": {
+    "url": "https://github.com/js07/pd-scripts/issues"
+  },
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -41,7 +43,7 @@
     "oclif": "^1.18.1",
     "prettier": "2.4.1",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.10"
+    "typescript": "^4.4.4"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -65,7 +67,10 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "js07/pd-scripts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js07/pd-scripts.git"
+  },
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
@@ -73,5 +78,8 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "directories": {
+    "test": "test"
+  }
 }

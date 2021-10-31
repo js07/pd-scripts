@@ -1,16 +1,16 @@
 import { Command, flags } from '@oclif/command';
 import { bumpVersion } from '../../actions';
-import args from '../../args';
+import args, { actionCommandArgs } from '../../args';
 
 export default class VersionBump extends Command {
-  static description = 'describe the command here'
+  static description = 'Bump action versions'
 
   static flags = {
     help: flags.help({ char: 'h' }),
     storePrev: args.storePrev,
   }
 
-  static args = [{ name: 'files', required: true }]
+  static args = [...actionCommandArgs]
 
   static strict = false
 
