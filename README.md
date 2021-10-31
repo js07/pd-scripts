@@ -30,13 +30,14 @@ USAGE
 <!-- commands -->
 * [`pd-scripts create FILES`](#pd-scripts-create-files)
 * [`pd-scripts help [COMMAND]`](#pd-scripts-help-command)
+* [`pd-scripts publish [FILE]`](#pd-scripts-publish-file)
 * [`pd-scripts test FILES`](#pd-scripts-test-files)
 * [`pd-scripts version [FILE]`](#pd-scripts-version-file)
 * [`pd-scripts version:bump FILES`](#pd-scripts-versionbump-files)
 * [`pd-scripts version:dev FILES`](#pd-scripts-versiondev-files)
 * [`pd-scripts version:reset FILES`](#pd-scripts-versionreset-files)
 * [`pd-scripts version:restore FILES`](#pd-scripts-versionrestore-files)
-* [`pd-scripts version:set [FILE]`](#pd-scripts-versionset-file)
+* [`pd-scripts version:set FILES`](#pd-scripts-versionset-files)
 * [`pd-scripts version:store FILES`](#pd-scripts-versionstore-files)
 
 ## `pd-scripts create FILES`
@@ -74,6 +75,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
+
+## `pd-scripts publish [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pd-scripts publish [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/publish.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/publish.ts)_
 
 ## `pd-scripts test FILES`
 
@@ -164,18 +181,18 @@ OPTIONS
 
 _See code: [src/commands/version/restore.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/restore.ts)_
 
-## `pd-scripts version:set [FILE]`
+## `pd-scripts version:set FILES`
 
 describe the command here
 
 ```
 USAGE
-  $ pd-scripts version:set [FILE]
+  $ pd-scripts version:set FILES
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help             show CLI help
+  -v, --version=version  (required)
+  --storePrev            store action versions to restore later?
 ```
 
 _See code: [src/commands/version/set.ts](https://github.com/js07/pd-scripts/blob/v0.0.2/src/commands/version/set.ts)_

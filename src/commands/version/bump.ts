@@ -17,6 +17,6 @@ export default class VersionBump extends Command {
   async run() {
     const { argv, flags } = this.parse(VersionBump);
 
-    bumpVersion({ globs: argv, storePrev: flags.storePrev });
+    return bumpVersion({ globs: argv, storePrev: flags.storePrev });
   }
 }
