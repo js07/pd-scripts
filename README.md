@@ -26,7 +26,7 @@ $ npm install -g @js07/pd-scripts
 $ pd-scripts COMMAND
 running command...
 $ pd-scripts (-v|--version|version)
-@js07/pd-scripts/0.0.5 darwin-x64 node-v14.18.1
+@js07/pd-scripts/0.0.6 darwin-x64 node-v14.18.1
 $ pd-scripts --help [COMMAND]
 USAGE
   $ pd-scripts COMMAND
@@ -68,7 +68,7 @@ OPTIONS
   --selectAccount          select connected app account in action config
 ```
 
-_See code: [src/commands/create.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/create.ts)_
 
 ## `pd-scripts help [COMMAND]`
 
@@ -104,7 +104,7 @@ OPTIONS
   --profile=profile  pipedream profile to use
 ```
 
-_See code: [src/commands/publish.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/publish.ts)_
+_See code: [src/commands/publish.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/publish.ts)_
 
 ## `pd-scripts qa FILES`
 
@@ -132,7 +132,7 @@ EXAMPLE
   $ pd-scripts qa components/confection --app "Confection" -u <PDUsernawme> -p "<PDPassword>"
 ```
 
-_See code: [src/commands/qa.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/qa.ts)_
+_See code: [src/commands/qa.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/qa.ts)_
 
 ## `pd-scripts version:bump FILES`
 
@@ -150,7 +150,7 @@ OPTIONS
   --storePrev  store action versions to restore later?
 ```
 
-_See code: [src/commands/version/bump.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/bump.ts)_
+_See code: [src/commands/version/bump.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/bump.ts)_
 
 ## `pd-scripts version:dev FILES`
 
@@ -168,7 +168,7 @@ OPTIONS
   --storePrev  store action versions to restore later?
 ```
 
-_See code: [src/commands/version/dev.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/dev.ts)_
+_See code: [src/commands/version/dev.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/dev.ts)_
 
 ## `pd-scripts version:reset FILES`
 
@@ -186,7 +186,7 @@ OPTIONS
   --storePrev  store action versions to restore later?
 ```
 
-_See code: [src/commands/version/reset.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/reset.ts)_
+_See code: [src/commands/version/reset.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/reset.ts)_
 
 ## `pd-scripts version:restore FILES`
 
@@ -203,7 +203,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/version/restore.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/restore.ts)_
+_See code: [src/commands/version/restore.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/restore.ts)_
 
 ## `pd-scripts version:set FILES`
 
@@ -222,7 +222,7 @@ OPTIONS
   --storePrev            store action versions to restore later?
 ```
 
-_See code: [src/commands/version/set.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/set.ts)_
+_See code: [src/commands/version/set.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/set.ts)_
 
 ## `pd-scripts version:show`
 
@@ -236,7 +236,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/version/show.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/show.ts)_
+_See code: [src/commands/version/show.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/show.ts)_
 
 ## `pd-scripts version:store FILES`
 
@@ -253,5 +253,5 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/version/store.ts](https://github.com/js07/pd-scripts/blob/v0.0.5/src/commands/version/store.ts)_
+_See code: [src/commands/version/store.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/version/store.ts)_
 <!-- commandsstop -->
