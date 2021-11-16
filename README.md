@@ -39,6 +39,7 @@ USAGE
 * [`pd-scripts help [COMMAND]`](#pd-scripts-help-command)
 * [`pd-scripts publish FILES`](#pd-scripts-publish-files)
 * [`pd-scripts qa FILES`](#pd-scripts-qa-files)
+* [`pd-scripts refresh URL`](#pd-scripts-refresh-url)
 * [`pd-scripts version:bump FILES`](#pd-scripts-versionbump-files)
 * [`pd-scripts version:dev FILES`](#pd-scripts-versiondev-files)
 * [`pd-scripts version:reset FILES`](#pd-scripts-versionreset-files)
@@ -133,6 +134,30 @@ EXAMPLE
 ```
 
 _See code: [src/commands/qa.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/qa.ts)_
+
+## `pd-scripts refresh URL`
+
+Refresh actions in a workflow
+
+```
+USAGE
+  $ pd-scripts refresh URL
+
+ARGUMENTS
+  URL  url of workflow
+
+OPTIONS
+  -h, --help               show CLI help
+  -p, --password=password  (required) Pipedream password
+  -u, --username=username  (required) Pipedream username or email
+  --[no-]headless          run puppeteer in headless mode
+
+EXAMPLE
+  $ pd-scripts refresh https://pipedream.com/@pdusername/workflow-name-p_OKCKmHN/edit -u "<PDUsernawme>" -p 
+  "<PDPassword>"
+```
+
+_See code: [src/commands/refresh.ts](https://github.com/js07/pd-scripts/blob/v0.0.6/src/commands/refresh.ts)_
 
 ## `pd-scripts version:bump FILES`
 
