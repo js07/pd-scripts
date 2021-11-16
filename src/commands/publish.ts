@@ -1,9 +1,6 @@
-// import moduleName from '../utils/pipedream/cli'
 import { Command, flags } from '@oclif/command';
 import { publish } from '../actions/publish';
 import { actionCommandArgs, publishArgs } from '../args';
-// import { publishFiles } from '../utils/pipedream/cli';
-
 export default class Publish extends Command {
   static description = 'Publish actions'
 

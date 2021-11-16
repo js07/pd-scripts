@@ -1,6 +1,6 @@
 import { Command, flags } from '@oclif/command';
+import { ACTION_VERSIONS_KEY } from '../../pipedream/actions';
 import { get } from '../../utils/datastore';
-import { ACTION_VERSIONS_KEY } from '../../utils/files';
 
 export default class VersionShow extends Command {
   static description = 'Show stored versions'

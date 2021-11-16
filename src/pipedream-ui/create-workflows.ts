@@ -1,7 +1,7 @@
-import { launch } from '../puppeteer';
+import { launch } from '../utils/puppeteer';
 import { signin } from './signin';
-import { log } from '../logger';
-import { addWorkflow } from './add-workfow';
+import { log } from '../utils/logger';
+import { addWorkflow } from './add-workflow';
 
 export interface CreateWorkflowsOptions {
   username: string;

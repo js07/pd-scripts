@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer-core';
-import { aOrAn } from '../text';
-import { xPathExpression } from '../xpath';
+import { aOrAn } from '../utils/text';
+import { xPathExpression } from '../utils/xpath';
 
 interface AddActionOptions {
   action: string;
@@ -89,7 +89,6 @@ export async function addAction(
           break;
         }
         // Click load more actions
-        // bg-grey-lightest rounded-sm text-bluegrey-dark
         const loadMoreActionsButton = document.evaluate(
           `//div[text()='Load more ${app} actions' and contains(concat(' ', @class, ' '), ' ml-1 ')]`,
           document,
@@ -145,7 +144,6 @@ export async function addAction(
       // If account dropdown has greater than 2 children, an account has been connected for the app
     if (dropdownChildCount > 2) {
       // Click on first element in dropdown, the connected account
-      // await page.click('.drop-down-content>.bg-white>div:first-child>button');
       await page.evaluate(accountDropdownSelector => {
         const accountButton = document.querySelector<HTMLButtonElement>(
           `${accountDropdownSelector}>div:first-child>button`

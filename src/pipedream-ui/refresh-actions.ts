@@ -1,11 +1,7 @@
 import { Page } from 'puppeteer-core';
-import { log } from '../logger';
-import { launch } from '../puppeteer';
+import { log } from '../utils/logger';
+import { launch } from '../utils/puppeteer';
 import { signin } from './signin';
-
-// interface RefreshActionsOptions {
-//   url: string;
-// }
 
 export async function refreshActions(page: Page) {
   await page.waitForTimeout(500);

@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer-core';
-import { log } from '../logger';
+import { log } from '../utils/logger';
 import { addAction } from './add-action';
 
 const PIPEDREAM_NEW_WORKFLOW_URL = 'https://pipedream.com/new';

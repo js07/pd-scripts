@@ -1,7 +1,8 @@
-import { restoreVersion, storeVersion } from '.';
-import * as Files from '../utils/files';
+import { restoreVersion, setDevVersion } from '.';
+import * as Files from '../utils/file';
 import { log } from '../utils/logger';
-import { publishFiles } from '../utils/pipedream/cli';
+import { publishFiles } from '../pipedream/cli';
+import { getActionFilePaths } from '../pipedream/actions';
 
 export interface PublishActionProps {
   globs: Files.Globs;
@@ -10,12 +11,10 @@ export interface PublishActionProps {
 }
 
 export async function publish({ globs, profile, dev }: PublishActionProps) {
-  const filePaths = Files.getActionFilePaths(globs);
+  const filePaths = getActionFilePaths(globs);
 
   if (dev) {
-    storeVersion({ globs: filePaths });
-    log('Setting dev versions...');
-    await Files.setDevVersion(filePaths);
+    await setDevVersion({ globs: filePaths, storePrev: true });
   }
 
   log('Publishing components...');

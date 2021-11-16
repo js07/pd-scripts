@@ -1,8 +1,11 @@
-import * as Files from '../utils/files';
+// import * as Files from '../utils/file';
+import * as Actions from '../pipedream/actions';
+import * as Components from '../pipedream/components';
+import { Globs } from '../utils/file';
 import { log } from '../utils/logger';
 
 interface VersionActionProps {
-  globs: Files.Globs;
+  globs: Globs;
 }
 
 interface ChangeVersionActionProps extends VersionActionProps {
@@ -10,52 +13,46 @@ interface ChangeVersionActionProps extends VersionActionProps {
 }
 
 export function restoreVersion({ globs }: VersionActionProps) {
-  log('Restoring versions...');
-  const filePaths = Files.getActionFilePaths(globs);
-  return Files.restoreVersions(filePaths);
+  log('Restoring version(s)...');
+  const filePaths = Actions.getActionFilePaths(globs);
+  return Actions.restoreVersions(filePaths);
 }
 
 export function storeVersion({ globs }: VersionActionProps) {
-  log('Storing versions...');
-  const filePaths = Files.getActionFilePaths(globs);
-  return Files.storeVersions(filePaths);
+  log('Storing version(s)...');
+  const filePaths = Actions.getActionFilePaths(globs);
+  return Actions.storeVersions(filePaths);
 }
 
 export function bumpVersion({ globs, storePrev }: ChangeVersionActionProps) {
-  const filePaths = Files.getActionFilePaths(globs);
+  const filePaths = Actions.getActionFilePaths(globs);
   if (storePrev) {
-    // Files.storeVersions(globs);
     storeVersion({ globs: filePaths });
   }
-  log('Bumping versions...');
-  return Files.bumpVersion(filePaths);
+  return Components.bumpVersion(filePaths);
 }
 export function setVersion({ globs, storePrev, version }: ChangeVersionActionProps & { version: string }) {
-  const filePaths = Files.getActionFilePaths(globs);
+  const filePaths = Actions.getActionFilePaths(globs);
   if (storePrev) {
-    // Files.storeVersions(globs);
     storeVersion({ globs: filePaths });
   }
-  log('Setting versions...');
-  return Files.setVersion(filePaths, version);
+  return Components.setVersion(filePaths, version);
 }
 
 export function setDevVersion({ globs, storePrev }: ChangeVersionActionProps) {
-  const filePaths = Files.getActionFilePaths(globs);
+  const filePaths = Actions.getActionFilePaths(globs);
   if (storePrev) {
-    // Files.storeVersions(globs);
     storeVersion({ globs: filePaths });
   }
-  log('Setting dev versions...');
-  return Files.setDevVersion(filePaths);
+  log('Setting dev version(s)...');
+  return Components.setDevVersion(filePaths);
 }
 
 export function resetVersion({ globs, storePrev }: ChangeVersionActionProps) {
-  const filePaths = Files.getActionFilePaths(globs);
+  const filePaths = Actions.getActionFilePaths(globs);
   if (storePrev) {
-    // Files.storeVersions(globs);
     storeVersion({ globs: filePaths });
   }
-  log('Resetting versions...');
-  return Files.resetVersion(filePaths);
+  log('Resetting version(s)...');
+  return Components.resetVersion(filePaths);
 }
