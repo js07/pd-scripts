@@ -1,7 +1,7 @@
 {
   "name": "@js07/pd-scripts",
   "description": "Scripts for developing Pipedream components",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "js07 @js07",
   "bin": {
     "pd-scripts": "bin/run"
