@@ -4,9 +4,8 @@ pd-scripts
 Scripts for developing Pipedream components
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/pd-scripts.svg)](https://npmjs.org/package/pd-scripts)
-[![Downloads/week](https://img.shields.io/npm/dw/pd-scripts.svg)](https://npmjs.org/package/pd-scripts)
-[![License](https://img.shields.io/npm/l/pd-scripts.svg)](https://github.com/js07/pd-scripts/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@js07/pd-scripts)](https://npmjs.org/package/@js07/pd-scripts)
+[![License](https://img.shields.io/npm/l/@js07/pd-scripts?color=blue)](https://github.com/js07/pd-scripts/blob/master/LICENSE)
 
 <!-- toc -->
 * [Dependencies](#dependencies)
