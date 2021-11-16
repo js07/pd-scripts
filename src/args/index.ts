@@ -11,7 +11,7 @@ export const workflowArgs = {
   app: flags.string({ description: 'App name', required: true }),
   headless: flags.boolean({ default: true, allowNo: true, description: 'run puppeteer in headless mode' }),
   selectAccount: flags.boolean({ default: false, description: 'select connected app account in action config' }),
-  combined: flags.boolean({ description: 'Add all actions to the same workflow', default: true }),
+  combined: flags.boolean({ description: 'Add all actions to the same workflow', default: true, allowNo: true }),
 };
 
 const args = {
