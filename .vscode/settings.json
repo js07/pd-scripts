@@ -1,7 +1,0 @@
-{
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.printWidth": 120,
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true
-}
