@@ -74,6 +74,10 @@
       "s3": {
         "bucket": "pd-scripts"
       }
+    },
+    "macos": {
+      "identifier": "com.js07.pd-scripts",
+      "sign": "Developer ID Installer: Jacob Pines (6Z226SQ8UL)"
     }
   },
   "repository": {
