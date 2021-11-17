@@ -39,6 +39,7 @@ USAGE
 * [`pd-scripts publish FILES`](#pd-scripts-publish-files)
 * [`pd-scripts qa FILES`](#pd-scripts-qa-files)
 * [`pd-scripts refresh URL`](#pd-scripts-refresh-url)
+* [`pd-scripts update [CHANNEL]`](#pd-scripts-update-channel)
 * [`pd-scripts version:bump FILES`](#pd-scripts-versionbump-files)
 * [`pd-scripts version:dev FILES`](#pd-scripts-versiondev-files)
 * [`pd-scripts version:reset FILES`](#pd-scripts-versionreset-files)
@@ -157,6 +158,20 @@ EXAMPLE
 ```
 
 _See code: [src/commands/refresh.ts](https://github.com/js07/pd-scripts/blob/v0.1.0/src/commands/refresh.ts)_
+
+## `pd-scripts update [CHANNEL]`
+
+update the pd-scripts CLI
+
+```
+USAGE
+  $ pd-scripts update [CHANNEL]
+
+OPTIONS
+  --from-local  interactively choose an already installed version
+```
+
+_See code: [@oclif/plugin-update](https://github.com/oclif/plugin-update/blob/v1.5.0/src/commands/update.ts)_
 
 ## `pd-scripts version:bump FILES`
 
