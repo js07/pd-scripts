@@ -9,6 +9,7 @@ Scripts for developing Pipedream components
 
 <!-- toc -->
 * [Dependencies](#dependencies)
+* [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -17,6 +18,35 @@ Scripts for developing Pipedream components
 * [Node.js](https://nodejs.org/en/)
 * [Google Chrome](https://www.google.com/chrome/)
 * [Pipedream CLI](https://pipedream.com/docs/cli/install/)
+
+# Installation
+
+## npm
+###### _Requires [Node.js 8+](https://nodejs.org/en/download/)_
+
+[Install the package globally](https://docs.npmjs.com/downloading-and-installing-packages-globally) by running the following command:
+```
+npm install -g @js07/pd-scripts
+```
+## macOS Installer
+
+Download and open [pd-scripts.pkg](https://pd-scripts.s3.amazonaws.com/pd-scripts.pkg).
+
+## Windows Executable
+
+- Windows (32-bit): [pd-scripts-x86.exe](https://pd-scripts.s3.amazonaws.com/pd-scripts-x86.exe)
+- Windows (64-bit): [pd-scripts-x64.exe](https://pd-scripts.s3.amazonaws.com/pd-scripts-x64.exe)
+
+## Binaries
+
+Extract the tar archive file and place the `pd-scripts` folder somewhere in [your `PATH`](https://opensource.com/article/17/6/set-path-linux).
+
+- [Linux (x64)](https://pd-scripts.s3.amazonaws.com/pd-scripts-linux-x64.tar.gz)
+- [Linux (ARM)](https://pd-scripts.s3.amazonaws.com/pd-scripts-linux-arm.tar.gz)
+- [Windows (32-bit)](https://pd-scripts.s3.amazonaws.com/pd-scripts-win32-x86.tar.gz)
+- [Windows (64-bit)](https://pd-scripts.s3.amazonaws.com/pd-scripts-win32-x64.tar.gz)
+- [macOS (64-bit)](https://pd-scripts.s3.amazonaws.com/pd-scripts-darwin-x64.tar.gz)
+
 
 # Usage
 <!-- usage -->
