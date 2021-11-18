@@ -21,23 +21,23 @@ Scripts for developing Pipedream components
 
 # Installation
 
-## npm
+### npm
 ###### _Requires [Node.js 8+](https://nodejs.org/en/download/)_
 
 [Install the package globally](https://docs.npmjs.com/downloading-and-installing-packages-globally) by running the following command:
 ```
 npm install -g @js07/pd-scripts
 ```
-## macOS Installer
+### macOS Installer
 
 Download and open [pd-scripts.pkg](https://pd-scripts.s3.amazonaws.com/pd-scripts.pkg).
 
-## Windows Executable
+### Windows Executable
 
 - Windows (32-bit): [pd-scripts-x86.exe](https://pd-scripts.s3.amazonaws.com/pd-scripts-x86.exe)
 - Windows (64-bit): [pd-scripts-x64.exe](https://pd-scripts.s3.amazonaws.com/pd-scripts-x64.exe)
 
-## Binaries
+### Binaries
 
 Extract the tar archive file and place the `pd-scripts` folder somewhere in [your `PATH`](https://opensource.com/article/17/6/set-path-linux).
 
