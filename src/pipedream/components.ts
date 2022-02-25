@@ -53,6 +53,9 @@ export function bumpVersion(globs: Globs) {
   });
 }
 export function setDevVersion(globs: Globs) {
-  const version = `0.0.${Math.floor(Date.now() / 1000)}`;
-  return setVersion(globs, version);
+  return changeVersion(globs, oldVersion => {
+    const versionParts = oldVersion.split('.');
+    const newVersion = `${versionParts[0] ?? 0}.${versionParts[1] ?? 0}.${Math.floor(Date.now() / 1000)}`;
+    return `version: "${newVersion}"`;
+  });
 }
